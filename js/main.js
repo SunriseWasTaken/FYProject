@@ -105,7 +105,7 @@ function updateUI(dataToRender) {
         `;
         feedList.appendChild(li);
         
-        // Extract sample data for analytics
+        // Keep chart data intentionally small for readability
         if (validCrisesCount < 5) {
             const shortName = countryName.length > 15 ? countryName.substring(0, 15) + '...' : countryName;
             chartLabels.push(shortName);
@@ -123,7 +123,7 @@ function updateUI(dataToRender) {
     renderCharts(chartLabels, severityData, mediaData);
 }
 
-// Render or update Chart.js visualisations
+// Render or update visualisations
 function renderCharts(labels, severity, media) {
     if (awarenessChartInstance) awarenessChartInstance.destroy();
     if (frequencyChartInstance) frequencyChartInstance.destroy();
@@ -168,10 +168,10 @@ function renderCharts(labels, severity, media) {
     frequencyChartInstance = new Chart(ctx2, {
         type: 'line',
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', ],
+            labels: [ 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
             datasets: [{
-                label: 'Global News Mentions (Thousands)',
-                data: [12, 19, 8, 5],
+                label: 'Global News Mentions',
+                data: [14, 27, 9, 33, 18, 25, 11, 29, 16],
                 borderColor: '#2563eb',
                 tension: 0.4,
                 fill: true,
