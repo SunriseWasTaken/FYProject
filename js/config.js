@@ -1,10 +1,28 @@
-// Expanded lists to make the categorization less "brittle"
+// Curated region lists for ReliefWeb country naming patterns.
 const REGIONS = {
-    'africa': ['Somalia', 'South Sudan', 'Sudan', 'Democratic Republic of the Congo', 'Ethiopia', 'Mali', 'Niger', 'Cameroon', 'Nigeria', 'Kenya', 'Burkina Faso', 'Chad', 'Central African Republic', 'Mozambique', 'Madagascar'],
-    'middle-east': ['Yemen', 'occupied Palestinian territory', 'Iran (Islamic Republic of)', 'Syrian Arab Republic', 'Lebanon', 'Iraq', 'Jordan', 'Türkiye'],
-    'asia': ['Myanmar', 'Afghanistan', 'Pakistan', 'Bangladesh', 'India', 'Indonesia', 'Philippines', 'Sri Lanka', 'Nepal'],
-    'americas': ['Colombia', 'Haiti', 'Venezuela', 'Mexico', 'Peru', 'Ecuador', 'Honduras', 'Guatemala', 'El Salvador', 'Nicaragua'],
-    'europe': ['Ukraine', 'Russian Federation', 'Armenia', 'Azerbaijan']
+    'africa': [
+        'Somalia', 'South Sudan', 'Sudan', 'Democratic Republic of the Congo', 'Congo',
+        'Ethiopia', 'Eritrea', 'Djibouti', 'Mali', 'Niger', 'Chad', 'Burkina Faso',
+        'Cameroon', 'Nigeria', 'Kenya', 'Uganda', 'Central African Republic',
+        'Mozambique', 'Madagascar', 'Zimbabwe', 'Malawi'
+    ],
+    'middle-east': [
+        'Yemen', 'occupied Palestinian territory', 'State of Palestine', 'Iran (Islamic Republic of)',
+        'Syrian Arab Republic', 'Lebanon', 'Iraq', 'Jordan', 'Turkey', 'Türkiye',
+        'Saudi Arabia', 'Israel'
+    ],
+    'asia': [
+        'Myanmar', 'Afghanistan', 'Pakistan', 'Bangladesh', 'India', 'Indonesia',
+        'Philippines', 'Sri Lanka', 'Nepal', 'China', 'Kazakhstan', 'Kyrgyzstan', 'Tajikistan'
+    ],
+    'americas': [
+        'Colombia', 'Haiti', 'Venezuela', 'Mexico', 'Peru', 'Ecuador',
+        'Honduras', 'Guatemala', 'El Salvador', 'Nicaragua', 'Brazil'
+    ],
+    'europe': [
+        'Ukraine', 'Russian Federation', 'Armenia', 'Azerbaijan',
+        'Bosnia and Herzegovina', 'Serbia', 'Kosovo'
+    ]
 };
 
 const CRISIS_KEYWORDS = {
