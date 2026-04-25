@@ -116,6 +116,7 @@ body {
     border-left: 4px solid #e11d48;
     border-radius: 8px;
     margin-bottom: 10px;
+    margin-right: 5px;
     color: #4b5563;
     box-shadow: 0 2px 4px rgba(0,0,0,0.02);
     transition: transform 0.2s ease, box-shadow 0.2s ease;

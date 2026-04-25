@@ -128,8 +128,8 @@ function renderCharts(labels, severity, media) {
     if (awarenessChartInstance) awarenessChartInstance.destroy();
     if (frequencyChartInstance) frequencyChartInstance.destroy();
 
-    const ctx1 = document.getElementById('awarenessChart').getContext('2d');
-    awarenessChartInstance = new Chart(ctx1, {
+    const chart1 = document.getElementById('awarenessChart').getContext('2d');
+    awarenessChartInstance = new Chart(chart1, {
         type: 'bar',
         data: {
             labels: labels,
@@ -164,14 +164,14 @@ function renderCharts(labels, severity, media) {
         }
     });
 
-    const ctx2 = document.getElementById('frequencyChart').getContext('2d');
-    frequencyChartInstance = new Chart(ctx2, {
+    const chart2 = document.getElementById('frequencyChart').getContext('2d');
+    frequencyChartInstance = new Chart(chart2, {
         type: 'line',
         data: {
             labels: [ 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
             datasets: [{
                 label: 'Global News Mentions',
-                data: [14, 27, 9, 33, 18, 25, 11, 29, 16],
+                data: [14, 27, 9, 33, 20, 25, 11, 29, 16],
                 borderColor: '#2563eb',
                 tension: 0.4,
                 fill: true,

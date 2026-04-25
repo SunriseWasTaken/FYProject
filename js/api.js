@@ -1,4 +1,4 @@
-const RELIEFWEB_API = "https://api.reliefweb.int/v2/reports?appname=THParvin-goldstudentproject931-v00mi&limit=150&sort[]=date:desc&fields[include][]=title&fields[include][]=primary_country&fields[include][]=url&fields[include][]=date";
+const RELIEFWEB_API = "https://api.reliefweb.int/v2/reports?appname=THParvin-goldstudentproject931-v00mi&limit=500&sort[]=date:desc&fields[include][]=title&fields[include][]=primary_country&fields[include][]=url&fields[include][]=date";
 
 async function fetchCrisesData() {
     try {
