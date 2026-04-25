@@ -1,4 +1,4 @@
-// Curated region lists for ReliefWeb country naming patterns.
+// region lists
 const REGIONS = {
     'africa': [
         'Somalia', 'South Sudan', 'Sudan', 'Democratic Republic of the Congo', 'Congo',

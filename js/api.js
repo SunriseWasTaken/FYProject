@@ -11,7 +11,7 @@ async function fetchCrisesData() {
 
         const data = await response.json();
         
-        // Ensure only valid reports with coordinates and URLs are returned
+        // Ensures only valid reports with coordinates and URLs are returned
         return data.data.filter(report => 
             report.fields && 
             report.fields.primary_country && 

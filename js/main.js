@@ -1,9 +1,8 @@
-let allCrises = [];      
-let currentMarkers = []; 
-let awarenessChartInstance = null; 
-let frequencyChartInstance = null; 
+let allCrises = [];
+let currentMarkers = [];
+let awarenessChartInstance = null;
+let frequencyChartInstance = null;
 
-// Data mapping via config.js
 function getRegion(country) {
     for (let regionKey in REGIONS) {
         if (REGIONS[regionKey].includes(country)) return regionKey;
@@ -22,13 +21,12 @@ function getCrisisType(title) {
     return 'other';
 }
 
-// Initialise application and fetch data via api.js
 async function initializeApp() {
     const data = await fetchCrisesData();
-    
+
     if (data && data.length > 0) {
         allCrises = data;
-        document.getElementById('status').innerText = "Live API Data loaded.";
+        document.getElementById('status').innerText = "Live API data loaded.";
         applyFilters();
     } else {
         document.getElementById('status').innerText = "Error loading live data.";
@@ -36,7 +34,6 @@ async function initializeApp() {
     }
 }
 
-// Filter data based on UI selections
 function applyFilters() {
     const regionFilter = document.getElementById('region-filter').value;
     const typeFilter = document.getElementById('type-filter').value;
@@ -44,23 +41,20 @@ function applyFilters() {
     const filteredData = allCrises.filter(report => {
         const countryName = report.fields.primary_country.name;
         const title = report.fields.title;
-        
-        const matchesRegion = (regionFilter === 'all') || (getRegion(countryName) === regionFilter);
-        const matchesType = (typeFilter === 'all') || (getCrisisType(title) === typeFilter);
-        
+
+        const matchesRegion = regionFilter === 'all' || getRegion(countryName) === regionFilter;
+        const matchesType = typeFilter === 'all' || getCrisisType(title) === typeFilter;
+
         return matchesRegion && matchesType;
     });
 
     updateUI(filteredData);
 }
 
-// Update map markers, sidebar feed, and prepare chart data
 function updateUI(dataToRender) {
-    // Clear existing map pins
     currentMarkers.forEach(marker => map.removeLayer(marker));
     currentMarkers = [];
 
-    // Clear existing sidebar items
     const feedList = document.getElementById('crisis-feed-list');
     feedList.innerHTML = '';
 
@@ -75,15 +69,14 @@ function updateUI(dataToRender) {
         const countryName = report.fields.primary_country.name;
         const title = report.fields.title;
 
-        // Simulated scores for prototype visualisation
-        const severityScore = Math.floor(Math.random() * 40) + 60; 
-        const mediaScore = Math.floor(Math.random() * 30) + 10; 
+        // Placeholder scores
+        const severityScore = Math.floor(Math.random() * 40) + 60;
+        const mediaScore = Math.floor(Math.random() * 30) + 10;
 
-        // Render map marker
         const marker = L.circleMarker([lat, lon], {
             radius: 8, fillColor: "#e11d48", color: "#ffffff", weight: 2, opacity: 1, fillOpacity: 0.8
         }).addTo(map);
-        
+
         marker.bindPopup(`
             <div style="font-family: 'Inter', sans-serif;">
                 <h3 style="margin: 0 0 5px 0; color: #e11d48;">${countryName}</h3>
@@ -91,12 +84,11 @@ function updateUI(dataToRender) {
                 <p style="margin: 5px 0;"><strong>Severity:</strong> ${severityScore}/100</p>
                 <p style="margin: 5px 0;"><strong>Media Coverage:</strong> ${mediaScore}/100</p>
                 <hr style="border: 0; border-top: 1px solid #e5e7eb; margin: 10px 0;">
-                <a href="${report.fields.url}" target="_blank" style="color: #e11d48; font-weight: 600; text-decoration: none;">View Source Report ↗</a>
+                <a href="${report.fields.url}" target="_blank" style="color: #e11d48; font-weight: 600; text-decoration: none;">View source report ↗</a>
             </div>
         `);
         currentMarkers.push(marker);
 
-        // Render sidebar list item
         const li = document.createElement('li');
         li.innerHTML = `
             <a href="${report.fields.url}" target="_blank" style="text-decoration: none; color: inherit; display: block;">
@@ -104,8 +96,8 @@ function updateUI(dataToRender) {
             </a>
         `;
         feedList.appendChild(li);
-        
-        // Keep chart data intentionally small for readability
+
+        // Cap at 5 entries to keep charts readable
         if (validCrisesCount < 5) {
             const shortName = countryName.length > 15 ? countryName.substring(0, 15) + '...' : countryName;
             chartLabels.push(shortName);
@@ -123,7 +115,6 @@ function updateUI(dataToRender) {
     renderCharts(chartLabels, severityData, mediaData);
 }
 
-// Render or update visualisations
 function renderCharts(labels, severity, media) {
     if (awarenessChartInstance) awarenessChartInstance.destroy();
     if (frequencyChartInstance) frequencyChartInstance.destroy();
@@ -138,14 +129,14 @@ function renderCharts(labels, severity, media) {
                 { label: 'Media Score', data: media, backgroundColor: '#9ca3af', borderRadius: 4 }
             ]
         },
-        options: { 
-            responsive: true, 
+        options: {
+            responsive: true,
             maintainAspectRatio: false,
             layout: { padding: { bottom: 15 } },
             plugins: {
                 title: {
                     display: true,
-                    text: '(Click the legend below to filter datasets)',
+                    text: '(Click the legend to filter datasets)',
                     font: { size: 11, style: 'italic', weight: 'normal' },
                     color: '#6b7280',
                     padding: { bottom: 10 }
@@ -157,8 +148,8 @@ function renderCharts(labels, severity, media) {
                 },
                 y: {
                     beginAtZero: true,
-                    max: 100, 
-                    title: { display: true, text: 'Relative Index Score', color: '#4b5563', font: { weight: 'bold' } }
+                    max: 100,
+                    title: { display: true, text: 'Relative index score', color: '#4b5563', font: { weight: 'bold' } }
                 }
             }
         }
@@ -168,9 +159,9 @@ function renderCharts(labels, severity, media) {
     frequencyChartInstance = new Chart(chart2, {
         type: 'line',
         data: {
-            labels: [ 'Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
+            labels: ['Sep', 'Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar', 'Apr'],
             datasets: [{
-                label: 'Global News Mentions',
+                label: 'Global news mentions',
                 data: [14, 27, 9, 33, 20, 25, 11, 29, 16],
                 borderColor: '#2563eb',
                 tension: 0.4,
@@ -178,8 +169,8 @@ function renderCharts(labels, severity, media) {
                 backgroundColor: 'rgba(37, 99, 235, 0.1)'
             }]
         },
-        options: { 
-            responsive: true, 
+        options: {
+            responsive: true,
             maintainAspectRatio: false,
             layout: { padding: { bottom: 15 } },
             scales: { y: { beginAtZero: true } }
@@ -187,9 +178,7 @@ function renderCharts(labels, severity, media) {
     });
 }
 
-// Event listeners
 document.getElementById('region-filter').addEventListener('change', applyFilters);
 document.getElementById('type-filter').addEventListener('change', applyFilters);
 
-// Boot sequence
 setTimeout(initializeApp, 500);
