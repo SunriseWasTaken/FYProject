@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bear Witness | Crisis Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-wrapper">
+        
+        <aside class="sidebar">
+            <div class="brand">
+                <h1>Bear Witness</h1>
+                <p>Tracking Overlooked Humanitarian Crises</p>
+                <span id="status">Loading live data...</span>
+            </div>
+
+            <div class="filters">
+                <label>Region</label>
+                <select id="region-filter">
+                    <option value="all">All Regions</option>
+                    <option value="africa">Africa</option>
+                    <option value="asia">Asia</option>
+                    <option value="middle-east">Middle East</option>
+                    <option value="americas">Americas</option>
+                    <option value="europe">Europe</option>
+                </select>
+
+                <label>Crisis Type</label>
+                <select id="type-filter">
+                    <option value="all">All Types</option>
+                    <option value="conflict">Armed Conflict & Violence</option>
+                    <option value="displacement">Displacement & Refugees</option>
+                    <option value="disaster">Natural Disaster</option>
+                    <option value="health">Health & Disease</option>
+                </select>
+            </div>
+
+            <div class="recent-crises">
+                <h3>Live Crisis Feed</h3>
+                <ul id="crisis-feed-list" class="feed-list"></ul>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <div class="map-section">
+                <div id="map"></div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat-box">
+                    <h3>Severity vs Media Score (Simulated)</h3>
+                    <canvas id="awarenessChart"></canvas>
+                </div>
+                <div class="stat-box">
+                    <h3>Report Frequency</h3>
+                    <canvas id="frequencyChart"></canvas>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/main.js"></script>    
+    <script src="js/api.js"></script>
+    <script src="js/charts.js"></script>
+</body>
+</html>

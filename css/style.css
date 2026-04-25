@@ -1,0 +1,189 @@
+/* Base Styles & Typography */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main Layout */
+.dashboard-wrapper {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Sidebar & Branding */
+.sidebar {
+    width: 320px;
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.02);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #e11d48;
+}
+
+.brand p {
+    margin: 5px 0 15px 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+}
+
+#status {
+    display: inline-block;
+    font-size: 0.75rem;
+    color: #059669;
+    background: #d1fae5;
+    padding: 4px 8px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* Filters */
+.filters label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #4b5563;
+}
+
+.filters select {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 100%;
+    background-color: #f9fafb;
+    color: #1f2937;
+    border: 1px solid #d1d5db;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.filters select:focus {
+    outline: none;
+    border-color: #e11d48;
+    ring: 2px solid rgba(225, 29, 72, 0.2);
+}
+
+/* Live Crisis Feed */
+.recent-crises {
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.recent-crises h3 {
+    font-size: 1rem;
+    border-bottom: 2px solid #f3f4f6;
+    padding-bottom: 10px;
+    margin-top: 0;
+    padding-top: 10px;
+    position: sticky;
+    top: 0;
+    background-color: #ffffff;
+    z-index: 10;
+}
+
+.feed-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.feed-list li {
+    font-size: 0.8rem;
+    padding: 12px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-left: 4px solid #e11d48;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #4b5563;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;
+}
+
+.feed-list li:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(225, 29, 72, 0.15);
+    border-color: #e11d48;
+}
+
+.feed-list strong {
+    color: #e11d48;
+    font-weight: 700;
+}
+
+/* Main Content (Map & Charts) */
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+.map-section {
+    flex-grow: 2;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+#map { 
+    height: 100%; 
+    width: 100%; 
+}
+
+.stats-section {
+    height: 250px;
+    display: flex;
+    gap: 20px;
+}
+
+.stat-box {
+    flex: 1;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: relative;
+}
+
+.stat-box h3 {
+    margin: 0 0 10px 0;
+    font-size: 0.9rem;
+    color: #4b5563;
+}
+
+/* Vendor Overrides (Leaflet) */
+.leaflet-popup-content-wrapper { 
+    border-radius: 8px; 
+}
+
+.leaflet-popup-content h3 { 
+    color: #e11d48 !important; 
+    margin-bottom: 5px;
+}
