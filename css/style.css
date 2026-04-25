@@ -81,7 +81,6 @@ body {
 .filters select:focus {
     outline: none;
     border-color: #e11d48;
-    ring: 2px solid rgba(225, 29, 72, 0.2);
 }
 
 /* Live Crisis Feed */
