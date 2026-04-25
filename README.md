@@ -1,5 +1,8 @@
 # Bear Witness - User Guide
 
+## Live Demo
+https://sunrisewastaken.github.io/FYProject/
+
 ## What the software does
 Bear Witness is a browser-based dashboard that displays live humanitarian crisis reports from ReliefWeb on an interactive world map.  
 It lets users filter reports by region and crisis type, then view matching items in a live feed and summary charts.
