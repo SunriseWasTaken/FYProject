@@ -179,7 +179,7 @@ body {
     color: #4b5563;
 }
 
-/* Vendor Overrides (Leaflet) */
+/* Leaflet */
 .leaflet-popup-content-wrapper { 
     border-radius: 8px; 
 }

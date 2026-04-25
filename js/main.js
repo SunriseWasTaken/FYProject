@@ -3,6 +3,7 @@ let currentMarkers = [];
 let awarenessChartInstance = null;
 let frequencyChartInstance = null;
 
+// config.js
 function getRegion(country) {
     for (let regionKey in REGIONS) {
         if (REGIONS[regionKey].includes(country)) return regionKey;
@@ -21,6 +22,7 @@ function getCrisisType(title) {
     return 'other';
 }
 
+// init
 async function initializeApp() {
     const data = await fetchCrisesData();
 
@@ -34,6 +36,7 @@ async function initializeApp() {
     }
 }
 
+// applies dropdown filters
 function applyFilters() {
     const regionFilter = document.getElementById('region-filter').value;
     const typeFilter = document.getElementById('type-filter').value;
@@ -52,15 +55,18 @@ function applyFilters() {
 }
 
 function updateUI(dataToRender) {
+    // clears the old marks first
     currentMarkers.forEach(marker => map.removeLayer(marker));
     currentMarkers = [];
 
     const feedList = document.getElementById('crisis-feed-list');
     feedList.innerHTML = '';
 
-    let chartLabels = [];
+    // data for charts
     let severityData = [];
     let mediaData = [];
+
+    let chartLabels = [];
     let validCrisesCount = 0;
 
     dataToRender.forEach(report => {
@@ -116,9 +122,11 @@ function updateUI(dataToRender) {
 }
 
 function renderCharts(labels, severity, media) {
+    // clears old charts so there's no overlapping
     if (awarenessChartInstance) awarenessChartInstance.destroy();
     if (frequencyChartInstance) frequencyChartInstance.destroy();
 
+    // bar chart
     const chart1 = document.getElementById('awarenessChart').getContext('2d');
     awarenessChartInstance = new Chart(chart1, {
         type: 'bar',
@@ -155,6 +163,7 @@ function renderCharts(labels, severity, media) {
         }
     });
 
+    // line chart
     const chart2 = document.getElementById('frequencyChart').getContext('2d');
     frequencyChartInstance = new Chart(chart2, {
         type: 'line',
